@@ -1,31 +1,23 @@
-<!-- The updated content includes a new section for customer reviews and booking form using Google Forms -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Extrasauber</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Rubik', sans-serif;
-      background-color: #f5f5f5;
-      color: #222;
+      font-family: sans-serif;
     }
     header {
       background: #0c4a6e;
       color: white;
       text-align: center;
-      padding: 2rem 1rem 1rem;
+      padding: 1.5rem;
       position: relative;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
     header img {
-      max-width: 90px;
-      margin-bottom: 0.5rem;
+      max-width: 120px;
     }
     .lang-selector {
       position: absolute;
@@ -33,62 +25,37 @@
       right: 1rem;
     }
     .section {
-      padding: 3rem 1rem;
+      padding: 2rem;
       text-align: center;
     }
     .services {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
-      margin-top: 2rem;
+      margin-top: 1.5rem;
     }
     .service {
-      background: white;
-      border-radius: 12px;
-      padding: 2rem 1rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease;
-    }
-    .service:hover {
-      transform: translateY(-5px);
-    }
-    .service-icon {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 1rem;
     }
     form {
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
       max-width: 500px;
-      margin: 0 auto;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin: 2rem auto;
+      gap: 1rem;
     }
     input, textarea, select, button {
       padding: 0.75rem;
       font-size: 1rem;
-      margin-bottom: 1rem;
-      width: 100%;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      box-sizing: border-box;
-    }
-    button {
-      background-color: #0c4a6e;
-      color: white;
-      border: none;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    button:hover {
-      background-color: #08354d;
     }
     footer {
       background: #0c4a6e;
       color: white;
       text-align: center;
       padding: 1rem;
-      margin-top: 3rem;
+      margin-top: 2rem;
     }
   </style>
 </head>
@@ -101,7 +68,7 @@
         <option value="ar">العربية</option>
       </select>
     </div>
-    <h1 style="font-size: 2.2rem; margin: 0.5rem 0;">🧼 Extrasauber</h1>
+    <img src="1.png" alt="Extrasauber Logo">
     <h1 id="title">Extrasauber</h1>
     <p id="slogan">Professionelle Reinigung auf allen Ebenen</p>
   </header>
@@ -109,29 +76,29 @@
   <div class="section">
     <h2 id="services_title">Unsere Dienstleistungen</h2>
     <div class="services">
-      <div class="service" id="s1"><div class="service-icon">🏠</div></div>
-      <div class="service" id="s2"><div class="service-icon">🏢</div></div>
-      <div class="service" id="s3"><div class="service-icon">🪟</div></div>
-      <div class="service" id="s4"><div class="service-icon">🚚</div></div>
+      <div class="service" id="s1"></div>
+      <div class="service" id="s2"></div>
+      <div class="service" id="s3"></div>
+      <div class="service" id="s4"></div>
     </div>
   </div>
 
-  <div class="section" id="booking">
-    <h2>📅 Buchung / Booking / الحجز</h2>
-    <p>Bitte füllen Sie das folgende Formular aus, um einen Termin zu buchen.<br>
-    Please fill out the form below to book an appointment.<br>
-    الرجاء ملء النموذج التالي لحجز موعد.</p>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdnYOQUuXH-ZBEWKmUwRrsH9N1-5eoQG01E3cWQn_jA9Gx8RA/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Wird geladen…</iframe>
-  </div>
-
-  <div class="section" id="reviews">
-    <h2>🗣️ Kundenbewertungen / Customer Reviews / تقييمات العملاء</h2>
-    <form onsubmit="addReview(event)">
-      <input type="text" id="review_name" placeholder="Ihr Name | Name | الاسم" required>
-      <textarea id="review_text" placeholder="Ihre Bewertung | Your review | تقييمك" rows="4" required></textarea>
-      <button type="submit">Senden | Submit | إرسال</button>
+  <div class="section">
+    <h2 id="contact_title">Kontakt & Terminbuchung</h2>
+    <form>
+      <input type="text" id="name_ph" required>
+      <input type="email" id="email_ph" required>
+      <input type="tel" id="phone_ph">
+      <select id="service_select" required>
+        <option disabled selected id="select_placeholder"></option>
+        <option id="opt1"></option>
+        <option id="opt2"></option>
+        <option id="opt3"></option>
+        <option id="opt4"></option>
+      </select>
+      <textarea rows="4" id="message_ph"></textarea>
+      <button type="submit" id="submit_btn"></button>
     </form>
-    <div id="review_list" style="margin-top: 2rem;"></div>
   </div>
 
   <footer>
@@ -146,7 +113,18 @@
         s1: "Haushaltsreinigung",
         s2: "Büroreinigung",
         s3: "Fensterreinigung",
-        s4: "Reinigung nach Umzug oder Renovierung"
+        s4: "Reinigung nach Umzug oder Renovierung",
+        contact_title: "Kontakt & Terminbuchung",
+        name_ph: "Name",
+        email_ph: "Email",
+        phone_ph: "Telefon",
+        select_placeholder: "Wählen Sie eine Dienstleistung",
+        opt1: "Haushaltsreinigung",
+        opt2: "Büroreinigung",
+        opt3: "Fensterreinigung",
+        opt4: "Reinigung nach Umzug oder Renovierung",
+        message_ph: "Nachricht",
+        submit_btn: "Absenden"
       },
       en: {
         slogan: "Expert Cleaning for Every Need",
@@ -154,7 +132,18 @@
         s1: "Household Cleaning",
         s2: "Office Cleaning",
         s3: "Window Cleaning",
-        s4: "Post-Move or Renovation Cleaning"
+        s4: "Post-Move or Renovation Cleaning",
+        contact_title: "Contact & Booking",
+        name_ph: "Name",
+        email_ph: "Email",
+        phone_ph: "Phone",
+        select_placeholder: "Select a service",
+        opt1: "Household Cleaning",
+        opt2: "Office Cleaning",
+        opt3: "Window Cleaning",
+        opt4: "Post-Move or Renovation Cleaning",
+        message_ph: "Message",
+        submit_btn: "Submit"
       },
       ar: {
         slogan: "تنظيف احترافي لكل الاحتياجات",
@@ -162,7 +151,18 @@
         s1: "تنظيف المنازل",
         s2: "تنظيف المكاتب",
         s3: "تنظيف النوافذ",
-        s4: "تنظيف بعد الانتقال أو الترميم"
+        s4: "تنظيف بعد الانتقال أو الترميم",
+        contact_title: "تواصل معنا وحجز موعد",
+        name_ph: "الاسم",
+        email_ph: "البريد الإلكتروني",
+        phone_ph: "رقم الهاتف",
+        select_placeholder: "اختر خدمة",
+        opt1: "تنظيف المنازل",
+        opt2: "تنظيف المكاتب",
+        opt3: "تنظيف النوافذ",
+        opt4: "تنظيف بعد الانتقال أو الترميم",
+        message_ph: "الرسالة",
+        submit_btn: "إرسال"
       }
     };
 
@@ -172,38 +172,21 @@
       document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
       document.getElementById("slogan").innerText = t.slogan;
       document.getElementById("services_title").innerText = t.services_title;
-      document.getElementById("s1").children[1].innerText = t.s1;
-      document.getElementById("s2").children[1].innerText = t.s2;
-      document.getElementById("s3").children[1].innerText = t.s3;
-      document.getElementById("s4").children[1].innerText = t.s4;
-    }
-
-    function addReview(event) {
-      event.preventDefault();
-      const name = document.getElementById('review_name').value.trim();
-      const text = document.getElementById('review_text').value.trim();
-      if (!name || !text) return;
-
-      const reviewDiv = document.createElement('div');
-      reviewDiv.style.border = '1px solid #ccc';
-      reviewDiv.style.borderRadius = '8px';
-      reviewDiv.style.padding = '1rem';
-      reviewDiv.style.marginBottom = '1rem';
-      reviewDiv.style.backgroundColor = '#fff';
-
-      const nameElem = document.createElement('strong');
-      nameElem.innerText = name;
-
-      const textElem = document.createElement('p');
-      textElem.innerText = text;
-
-      reviewDiv.appendChild(nameElem);
-      reviewDiv.appendChild(textElem);
-
-      document.getElementById('review_list').prepend(reviewDiv);
-
-      document.getElementById('review_name').value = '';
-      document.getElementById('review_text').value = '';
+      document.getElementById("s1").innerText = t.s1;
+      document.getElementById("s2").innerText = t.s2;
+      document.getElementById("s3").innerText = t.s3;
+      document.getElementById("s4").innerText = t.s4;
+      document.getElementById("contact_title").innerText = t.contact_title;
+      document.getElementById("name_ph").placeholder = t.name_ph;
+      document.getElementById("email_ph").placeholder = t.email_ph;
+      document.getElementById("phone_ph").placeholder = t.phone_ph;
+      document.getElementById("select_placeholder").innerText = t.select_placeholder;
+      document.getElementById("opt1").innerText = t.opt1;
+      document.getElementById("opt2").innerText = t.opt2;
+      document.getElementById("opt3").innerText = t.opt3;
+      document.getElementById("opt4").innerText = t.opt4;
+      document.getElementById("message_ph").placeholder = t.message_ph;
+      document.getElementById("submit_btn").innerText = t.submit_btn;
     }
 
     document.addEventListener("DOMContentLoaded", () => {
