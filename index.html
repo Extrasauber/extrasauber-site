@@ -1,56 +1,48 @@
-<!-- The updated content includes a new section for customer reviews and booking form using Google Forms -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Extrasauber</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Rubik', sans-serif;
-      background-color: #f5f5f5;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
       color: #222;
     }
     header {
-      background: #0c4a6e;
+      background-color: #0c4a6e;
       color: white;
       text-align: center;
-      padding: 2rem 1rem 1rem;
+      padding: 2rem 1rem;
       position: relative;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
-    header img {
-      max-width: 90px;
-      margin-bottom: 0.5rem;
     }
     .lang-selector {
       position: absolute;
       top: 1rem;
       right: 1rem;
     }
+    header h1 {
+      margin: 0.5rem 0;
+      font-size: 2.5rem;
+    }
     .section {
-      padding: 3rem 1rem;
-      text-align: center;
+      padding: 2rem 1rem;
+      max-width: 1000px;
+      margin: auto;
     }
     .services {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1.5rem;
       margin-top: 2rem;
     }
     .service {
       background: white;
-      border-radius: 12px;
-      padding: 2rem 1rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease;
-    }
-    .service:hover {
-      transform: translateY(-5px);
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
     .service-icon {
       font-size: 2rem;
@@ -58,30 +50,36 @@
     }
     form {
       background: white;
-      padding: 2rem;
-      border-radius: 12px;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       max-width: 500px;
-      margin: 0 auto;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin: auto;
     }
     input, textarea, select, button {
-      padding: 0.75rem;
-      font-size: 1rem;
-      margin-bottom: 1rem;
       width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
       border: 1px solid #ccc;
       border-radius: 6px;
       box-sizing: border-box;
+      font-size: 1rem;
     }
     button {
       background-color: #0c4a6e;
       color: white;
       border: none;
       cursor: pointer;
-      transition: background 0.3s;
     }
     button:hover {
       background-color: #08354d;
+    }
+    #review_list div {
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
     }
     footer {
       background: #0c4a6e;
@@ -101,8 +99,7 @@
         <option value="ar">العربية</option>
       </select>
     </div>
-    <h1 style="font-size: 2.2rem; margin: 0.5rem 0;">🧼 Extrasauber</h1>
-    <h1 id="title">Extrasauber</h1>
+    <h1>🧼 Extrasauber</h1>
     <p id="slogan">Professionelle Reinigung auf allen Ebenen</p>
   </header>
 
@@ -131,7 +128,7 @@
       <textarea id="review_text" placeholder="Ihre Bewertung | Your review | تقييمك" rows="4" required></textarea>
       <button type="submit">Senden | Submit | إرسال</button>
     </form>
-    <div id="review_list" style="margin-top: 2rem;"></div>
+    <div id="review_list"></div>
   </div>
 
   <footer>
@@ -184,23 +181,9 @@
       const text = document.getElementById('review_text').value.trim();
       if (!name || !text) return;
 
-      const reviewDiv = document.createElement('div');
-      reviewDiv.style.border = '1px solid #ccc';
-      reviewDiv.style.borderRadius = '8px';
-      reviewDiv.style.padding = '1rem';
-      reviewDiv.style.marginBottom = '1rem';
-      reviewDiv.style.backgroundColor = '#fff';
-
-      const nameElem = document.createElement('strong');
-      nameElem.innerText = name;
-
-      const textElem = document.createElement('p');
-      textElem.innerText = text;
-
-      reviewDiv.appendChild(nameElem);
-      reviewDiv.appendChild(textElem);
-
-      document.getElementById('review_list').prepend(reviewDiv);
+      const div = document.createElement('div');
+      div.innerHTML = `<strong>${name}</strong><p>${text}</p>`;
+      document.getElementById('review_list').prepend(div);
 
       document.getElementById('review_name').value = '';
       document.getElementById('review_text').value = '';
